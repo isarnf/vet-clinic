@@ -14,18 +14,9 @@
             <label for="dataNascimento">Data de nascimento
                 <input th:value="${animal != null} ? ${animal.getDataNascimento()} : ${null}" type="date" name="dataNascimento" id="dataNascimento">
             </label>
-            <label for="sexo">
-                Sexo
-                <input th:value="${animal != null} ? ${animal.getSexo()} : ''" type="text" name="sexo" id="sexo">
-            </label>
-            <label for="peso">
-                Peso
-                <input th:value="${animal != null} ? ${animal.getPeso()} : 0" type="number" name="peso" id="peso">
-            </label>
-            <label for="raca">
-                Raça
-                <input th:value="${animal != null} ? ${animal.getRaca()} : ''" type="text" name="raca" id="raca">
-            </label>
+            <input th:value="${animal != null} ? ${animal.getSexo()} : ''" type="text" name="sexo" id="sexo">
+            <input th:value="${animal != null} ? ${animal.getPeso()} : 0" type="number" name="peso" id="peso">
+            <input th:value="${animal != null} ? ${animal.getRaca()} : ''" type="text" name="raca" id="raca">
             <input type="submit" value="Enviar">
         </form>
         <form th:if="${animal != null}" th:action="@{/animais/{id} (id = ${animal.getId()})}" th:method="DELETE">

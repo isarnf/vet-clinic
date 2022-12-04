@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    </head>
+
+    <body>
+        <form th:action="${action}" th:method="${method}">
+            <label for="nome">Nome
+                <input th:value="${veterinario != null} ? ${veterinario.getNome()} : ''" type="text" name="nome" id="nome">
+            </label>
+            <label for="cpf">CPF
+                <input th:value="${veterinario != null} ? ${veterinario.getCpf()} : ''" type="text" name="cpf" id="cpf">
+            </label>
+            <label for="crmv">CRMV
+                <input th:value="${veterinario != null} ? ${veterinario.getCrmv()} : ''" type="text" name="crmv" id="crmv">
+            </label>
+            <label for="email">E-mail
+                <input th:value="${veterinario != null} ? ${veterinario.getEmail()} : ''" type="text" name="email" id="email">
+            </label>
+            <input type="submit" value="Enviar">
+        </form>
+        <form th:if="${veterinario != null}" th:action="@{/veterinarios/{id} (id = ${veterinario.getId()})}" th:method="DELETE">
+            <input type="submit" value="Deletar">
+        </form>
+    </body>
+</html>

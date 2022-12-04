@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    </head>
+
+    <body>
+        <table>
+            <thead>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Espécie
+                </th>
+                <th>
+                    Data de nascimento
+                </th>
+            </thead>
+            <tbody>
+                <tr th:each="consulta : ${consultas}">
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

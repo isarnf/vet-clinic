@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    </head>
+
+    <body>
+        <form th:action="${action}" th:method="${method}">
+            <label for="dataNascimento">Animal
+                <select name="animalId" id="animalId">
+                    <option th:each="animal : ${animais}" th:value="${animal.getId()}" th:text="${animal.getNome()}"></option>
+                </select>
+            </label>
+            <label for="dataNascimento">Horário
+                <input type="datetime" name="dataNascimento" id="dataNascimento">
+            </label>
+            <input type="submit" value="Enviar">
+        </form>
+        <form th:if="${animal != null}" th:action="@{/animais/{id} (id = ${animal.getId()})}" th:method="DELETE">
+            <input type="submit" value="Deletar">
+        </form>
+    </body>
+</html>
