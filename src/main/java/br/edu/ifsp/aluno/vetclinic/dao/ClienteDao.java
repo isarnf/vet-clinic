@@ -2,23 +2,8 @@ package br.edu.ifsp.aluno.vetclinic.dao;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import br.edu.ifsp.aluno.vetclinic.domain.Cliente;
 
-public interface ClienteDao {
-    void save(Cliente cliente);
-    void update(Cliente cliente);
-    void delete(Long id);
-
-    Cliente findById(Long id);
-
-    Cliente findByEmail(String email);
-
-    Cliente findByCpf(String cpf);
-
-    List<Cliente> findByNome(String nome);
-
-    List<Cliente> findAll();
-
-    
-    
-}
+public interface ClienteDao extends JpaRepository<Cliente, Long> {}

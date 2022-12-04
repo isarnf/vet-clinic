@@ -1,11 +1,15 @@
 package br.edu.ifsp.aluno.vetclinic.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Entity
+@Data
+@EqualsAndHashCode(callSuper = false)
 @Table(name = "clientes")
+@Entity
 public class Cliente extends AbstractEntity<Long>{
 
     @Column(nullable = false, unique = true)

@@ -3,14 +3,13 @@ package br.edu.ifsp.aluno.vetclinic.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class AbstractEntity <ID extends Serializable> implements Serializable{
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private ID id;
 
