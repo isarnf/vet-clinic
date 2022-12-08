@@ -7,17 +7,20 @@
         <table>
             <thead>
                 <th>
-                    Nome
+                    Veterinário
                 </th>
                 <th>
-                    Espécie
+                    Animal
                 </th>
                 <th>
-                    Data de nascimento
+                    Horário
                 </th>
             </thead>
             <tbody>
                 <tr th:each="consulta : ${consultas}">
+                    <td th:text="${consulta.getAnimal().getNome()}"></td>
+                    <td>hello</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
