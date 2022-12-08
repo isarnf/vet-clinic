@@ -5,21 +5,21 @@
 
     <body>
         <form th:action="${action}" th:method="${method}">
-            <label for="nome">Nome
-                <input th:value="${animal != null} ? ${animal.getNome()} : ''" type="text" name="nome" id="nome">
+            <label for="cpf">CPF
+                <input th:value="${cliente != null} ? ${cliente.getCpf()} : ''" type="text" name="cpf" id="cpf">
             </label>
-            <label for="especie">Espécie
-                <input th:value="${animal != null} ? ${animal.getEspecie()} : ''" type="text" name="especie" id="especie">
+            <label for="cpf">Nome
+                <input th:value="${cliente != null} ? ${cliente.getNome()} : ''" type="text" name="nome" id="nome">
             </label>
-            <label for="dataNascimento">Data de nascimento
-                <input th:value="${animal != null} ? ${animal.getDataNascimento()} : ${null}" type="date" name="dataNascimento" id="dataNascimento">
+            <label for="crmv">Telefone
+                <input th:value="${cliente != null} ? ${cliente.getTelefone()} : ''" type="text" name="telefone" id="telefone">
             </label>
-            <input th:value="${animal != null} ? ${animal.getSexo()} : ''" type="text" name="sexo" id="sexo">
-            <input th:value="${animal != null} ? ${animal.getPeso()} : 0" type="number" name="peso" id="peso">
-            <input th:value="${animal != null} ? ${animal.getRaca()} : ''" type="text" name="raca" id="raca">
+            <label for="email">E-mail
+                <input th:value="${cliente != null} ? ${cliente.getEmail()} : ''" type="text" name="email" id="email">
+            </label>
             <input type="submit" value="Enviar">
         </form>
-        <form th:if="${animal != null}" th:action="@{/animais/{id} (id = ${animal.getId()})}" th:method="DELETE">
+        <form th:if="${cliente != null}" th:action="@{/clientes/{id} (id = ${cliente.getId()})}" th:method="DELETE">
             <input type="submit" value="Deletar">
         </form>
     </body>

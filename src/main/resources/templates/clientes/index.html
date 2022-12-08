@@ -7,33 +7,25 @@
         <table>
             <thead>
                 <th>
+                    CPF
+                </th>
+                <th>
                     Nome
                 </th>
                 <th>
-                    Espécie
+                    Telefone
                 </th>
                 <th>
-                    Data de nascimento
-                </th>
-                <th>
-                    Sexo
-                </th>
-                <th>
-                    Peso
-                </th>
-                <th>
-                    Raça
+                    E-mail
                 </th>
             </thead>
             <tbody>
-                <tr th:each="animal : ${animais}">
-                    <td th:text="${animal.getNome()}"></td>
-                    <td th:text="${animal.getEspecie()}"></td>
-                    <td th:text="${animal.getDataNascimento()}"></td>
-                    <td th:text="${animal.getSexo()}"></td>
-                    <td th:text="${animal.getPeso()}"></td>
-                    <td th:text="${animal.getRaca()}"></td>
-                    <td><a th:href="@{/animais/{id}/editar (id = ${animal.getId()})}">Ver</a></td>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.getCpf()}"></td>
+                    <td th:text="${cliente.getNome()}"></td>
+                    <td th:text="${cliente.getTelefone()}"></td>
+                    <td th:text="${cliente.getEmail()}"></td>
+                    <td><a th:href="@{/clientes/{id}/editar (id = ${cliente.getId()})}">Ver</a></td>
                 </tr>
             </tbody>
         </table>
