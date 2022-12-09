@@ -21,8 +21,10 @@
                     <label for="especie">
                         Espécie
                     </label>
-                    <input th:value="${animal != null} ? ${animal.getEspecie()} : ''" type="text" name="especie"
-                        id="especie">
+                    <select class="form-control" th:value="${animal != null} ? ${animal.getEspecie()}" name="especie" id="especie">
+                        <option value="Macho">Macho</option>
+                        <option value="Fêmea">Fêmea</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="dataNascimento">
@@ -41,9 +43,9 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="peso">
-                        Peso
+                        Peso(Kg)
                     </label>
-                    <input class="form-control" th:value="${animal != null} ? ${animal.getPeso()} : 0" type="number"
+                    <input class="form-control" th:value="${animal != null} ? ${animal.getPeso()} : 0" type="number" step=".01"
                         name="peso" id="peso">
                 </div>
                 <div class="mb-3">
