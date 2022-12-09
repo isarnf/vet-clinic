@@ -26,10 +26,10 @@ layout:decorate="~{layout}">
                     <td th:text="${veterionario.getCpf()}"></td>
                     <td th:text="${veterionario.getCrmv()}"></td>
                     <td th:text="${veterionario.getEmail()}"></td>
-                    <td><a th:href="@{/veterinarios/{id}/editar (id = ${veterionario.getId()})}">Ver</a></td>
+                    <td><a th:href="@{/authorized/veterinarios/{id}/editar (id = ${veterionario.getId()})}">Ver</a></td>
                 </tr>
             </tbody>
         </table>
-        <a class="btn btn-primary" href="/veterinarios/criar">Criar</a>
+        <a class="btn btn-primary" href="/authorized/veterinarios/criar">Criar</a>
     </body>
 </html>

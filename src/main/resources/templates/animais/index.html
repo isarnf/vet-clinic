@@ -29,6 +29,7 @@
                     <th>
                         Raça
                     </th>
+                    <th scope="col">Operação</th>
                 </thead>
                 <tbody>
                     <tr th:each="animal : ${animais}">
@@ -38,7 +39,7 @@
                         <td th:text="${animal.getSexo()}"></td>
                         <td th:text="${animal.getPeso()}"></td>
                         <td th:text="${animal.getRaca()}"></td>
-                        <td><a th:href="@{/animais/{id}/editar (id = ${animal.getId()})}">Ver</a></td>
+                        <td><a th:href="@{/authorized/animais/{id}/editar (id = ${animal.getId()})}">Ver</a></td>
                     </tr>
                 </tbody>
             </table>

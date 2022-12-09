@@ -41,6 +41,9 @@
                     </select>
                 </label>
                 <input class="btn btn-primary" type="submit" value="Enviar">
+                <form th:if="${consulta != null}" th:action="@{/authorized/{id} (id = ${consulta.getId()})}" th:method="DELETE">
+                    <input class="btn btn-error" type="submit" value="Deletar">
+                </form>
             </form>
         </div>
     </section>
