@@ -8,6 +8,8 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,8 +38,18 @@ public class Consulta {
     private Veterinario veterinario;
 
     @DateTimeFormat(iso = ISO.DATE_TIME)
-    @Column(name="data_horario",nullable = true)
-    private LocalDate dataHorario;
+    @Column(name="data_horario")
+    private LocalDateTime dataHorario;
+
+    public enum ConsultaStatus {
+        ABERTO,
+        CONCLUIDO,
+        DESMARCADO
+    };
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    public ConsultaStatus status;
 
     private Long formVeterinarioId;
     private Long formAnimalId;

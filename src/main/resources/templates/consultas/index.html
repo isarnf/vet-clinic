@@ -15,12 +15,17 @@
                 <th>
                     Horário
                 </th>
+                <th>
+                    Status
+                </th>
             </thead>
             <tbody>
                 <tr th:each="consulta : ${consultas}">
                     <td th:text="${consulta.getAnimal().getNome()}"></td>
-                    <td>hello</td>
-                    <td></td>
+                    <td th:text="${consulta.getVeterinario().getNome()}"></td>
+                    <td th:text="${consulta.getDataHorario()}"></td>
+                    <td th:text="${consulta.getStatus()}"></td>
+                    <td><a th:href="@{/consultas/{id}/ver (id = ${consulta.getId()})}">Ver</a></td>
                 </tr>
             </tbody>
         </table>

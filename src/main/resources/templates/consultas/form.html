@@ -5,18 +5,24 @@
 
     <body>
         <form th:action="${action}" th:method="${method}">
+            <input th:value="${consulta != null ? consulta.getId() : null}" type="hidden" name="id" id="id">
             <label for="formAnimalId">Animal
-                <select name="formAnimalId" id="formAnimalId">
+                <select th:attr="disabled=${mainDisabled}" name="formAnimalId" id="formAnimalId">
                     <option th:each="animal : ${animais}" th:value="${animal.getId()}" th:text="${animal.getNome()}"></option>
                 </select>
             </label>
             <label for="formVeterinarioId">Veterinário
-                <select name="formVeterinarioId" id="formVeterinarioId">
+                <select th:attr="disabled=${mainDisabled}" name="formVeterinarioId" id="formVeterinarioId">
                     <option th:each="veterinario : ${veterinarios}" th:value="${veterinario.getId()}" th:text="${veterinario.getNome()}"></option>
                 </select>
             </label>
             <label for="dataHorario">Horário
-                <input type="datetime-local" name="dataNascimento" id="dataNascimento">
+                <input th:attr="disabled=${mainDisabled}"th:value="${consulta != null ? consulta.dataHorario : null}" type="datetime-local" name="dataHorario" id="dataHorario">
+            </label>
+            <label th:attr="hidden=${statusHidden}" for="status">Status
+                <select th:attr="hidden=${statusHidden}" name="status" id="status">
+                    <option th:each="statusItem : ${status}" th:value="${statusItem.toString()}" th:text="${statusItem.toString()}"></option>
+                </select>
             </label>
             <input type="submit" value="Enviar">
         </form>

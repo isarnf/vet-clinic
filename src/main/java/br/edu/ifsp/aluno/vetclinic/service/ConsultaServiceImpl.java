@@ -14,12 +14,12 @@ public class ConsultaServiceImpl implements ConsultaService {
     private ConsultaDao consultaDao;
 
     @Override
-    public void deletar(Long id) {
+    public void deletar(String id) {
         consultaDao.deleteById(id);
     }
 
     @Override
-    public Consulta encontrarPorId(Long id) {
+    public Consulta encontrarPorId(String id) {
         return consultaDao.findById(id).orElseThrow();
     }
 
