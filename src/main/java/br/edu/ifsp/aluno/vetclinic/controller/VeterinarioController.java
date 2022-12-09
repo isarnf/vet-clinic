@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import br.edu.ifsp.aluno.vetclinic.domain.Veterinario;
 import br.edu.ifsp.aluno.vetclinic.service.VeterinarioService;
 
-@RequestMapping("/veterinarios")
+@RequestMapping("/authorized/veterinarios")
 @Controller
 public class VeterinarioController {
     @Autowired
@@ -26,7 +26,7 @@ public class VeterinarioController {
     
     @GetMapping("/criar")
     public String criar(Model model) {
-        model.addAttribute("action", "/veterinarios");
+        model.addAttribute("action", "/authorized/veterinarios");
         model.addAttribute("method", "post");
 
         return "veterinarios/form";
@@ -35,13 +35,13 @@ public class VeterinarioController {
     @PostMapping()
     public String salvar(Veterinario veterinario) {
         veterinarioService.salvar(veterinario);
-        return "redirect:/veterinarios";
+        return "redirect:/authorized/veterinarios";
     }
     
     @GetMapping("/{id}/editar")
     public String editar(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("veterinario", veterinarioService.encontrarPorId(id));
-        model.addAttribute("action", "/veterinarios/" + id);
+        model.addAttribute("action", "/authorized/veterinarios/" + id);
         model.addAttribute("method", "PUT");
         return "veterinarios/form";
     }
@@ -51,12 +51,12 @@ public class VeterinarioController {
         
 
         veterinarioService.salvar(veterinario);
-        return "redirect:/veterinarios";
+        return "redirect:/authorized/veterinarios";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String deletar(@PathVariable(value = "id") Long id) {
         veterinarioService.deletar(id);
-        return "redirect:/veterinarios";
+        return "redirect:/authorized/veterinarios";
     }
 }
