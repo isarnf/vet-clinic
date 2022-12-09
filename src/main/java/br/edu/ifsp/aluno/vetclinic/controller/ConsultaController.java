@@ -2,6 +2,7 @@ package br.edu.ifsp.aluno.vetclinic.controller;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ import br.edu.ifsp.aluno.vetclinic.service.ConsultaService;
 import br.edu.ifsp.aluno.vetclinic.service.VeterinarioService;
 import jakarta.servlet.http.HttpSession;
 
-@RequestMapping("/consultas")
+@RequestMapping("authorized/consultas")
 @Controller
 public class ConsultaController {
     @Autowired
@@ -31,10 +32,10 @@ public class ConsultaController {
     private VeterinarioService veterinarioService;
 
     @GetMapping
-    public String indice(Model model, HttpSession session) {
-        session.setAttribute("asd", "walter" + LocalDateTime.now().toString());
-        System.out.println(session.getAttribute("asd"));
-        model.addAttribute("consultas", consultaService.listar());
+    public String indice(Model model, HttpSession session) {    
+        Long veterinarioId = (Long)session.getAttribute("veterinario_id");
+
+        model.addAttribute("consultas", consultaService.encontrarConsultarPorVeterinario(veterinarioId));
         return "consultas/index";
     }
     
@@ -64,7 +65,7 @@ public class ConsultaController {
     }
     
     @GetMapping("/{id}/ver")
-    public String editar(@PathVariable(value = "id") String id, Model model) {
+    public String editar(@PathVariable(value = "id") String id, HttpSession httpSession, Model model) {
         model.addAttribute("consulta", consultaService.encontrarPorId(id));
         model.addAttribute("action", "/consultas/" + id);
         model.addAttribute("method", "PUT");
@@ -73,7 +74,11 @@ public class ConsultaController {
         model.addAttribute("mainDisabled", true);
 
         model.addAttribute("animais", animalService.listar());
-        model.addAttribute("veterinarios", veterinarioService.listar());
+
+        Long veterinarioId = (Long)httpSession.getAttribute("veterinario_id");
+        Veterinario veterinario = veterinarioService.encontrarPorId(veterinarioId);
+
+        model.addAttribute("veterinarios", List.of(veterinario));
         return "consultas/form";
     }
 

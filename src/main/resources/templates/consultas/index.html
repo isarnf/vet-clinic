@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        
-    </head>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<head>
+</head>
+
+<body>
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-              <!--<a class="navbar-brand" href="#">Navbar</a>-->
+              <a class="navbar-brand" href="#">Navbar</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -28,44 +29,33 @@
                 </ul>
               </div>
             </div>
-          </nav>
-        <table class="table">
-            <thead>
-<<<<<<< HEAD
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Espécie</th>
-                <th scope="col">Data de nascimento</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr th:each="consulta : ${consultas}">
-              </tr>
-=======
-                <th>
-                    Veterinário
-                </th>
-                <th>
-                    Animal
-                </th>
-                <th>
-                    Horário
-                </th>
-                <th>
-                    Status
-                </th>
-            </thead>
-            <tbody>
-                <tr th:each="consulta : ${consultas}">
-                    <td th:text="${consulta.getAnimal().getNome()}"></td>
-                    <td th:text="${consulta.getVeterinario().getNome()}"></td>
-                    <td th:text="${consulta.getDataHorario()}"></td>
-                    <td th:text="${consulta.getStatus()}"></td>
-                    <td><a th:href="@{/consultas/{id}/ver (id = ${consulta.getId()})}">Ver</a></td>
-                </tr>
->>>>>>> master
-            </tbody>
-          </table>
-    </body>
+          </nav> -->
+
+
+  <section class="layout-content" layout:fragment="corpo">
+    <div class="container-fluid p-3">
+      <table class="table table-light">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Veterinário</th>
+            <th scope="col">Animal</th>
+            <th scope="col">Horário</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="consulta : ${consultas}">
+            <td th:text="${consulta.getId()}"></td>
+            <td th:text="${consulta.getVeterinario().getNome()}"></td>
+            <td th:text="${consulta.getAnimal().getNome()}"></td>
+            <td th:text="${consulta.getDataHorario()}"></td>
+            <td><a th:href="@{/authorized/consultas/{id}/ver (id = ${consulta.getId()})}">Ver</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn btn-primary" href="/authorized/consultas/criar">Criar</a>
+    </div>
+  </section>
+</body>
+
 </html>

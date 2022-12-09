@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.Data;
 
 
-@RequestMapping("/sessions")
+@RequestMapping("/login")
 @Controller
 public class LoginController {
     @Data
@@ -24,12 +24,12 @@ public class LoginController {
     @Autowired
     private VeterinarioDao veterinarioDao;
 
-    @PostMapping
+    @PostMapping()
     public String login(HttpSession httpSession, LoginDTO loginDTO){
         Veterinario veterinario = veterinarioDao.findByEmail(loginDTO.getEmail());
         if (veterinario != null && loginDTO.getSenha().equals(veterinario.getSenha())){
             httpSession.setAttribute("veterinario_id", veterinario.getId());
-             return "redirect:/consultas";
+            return "redirect:/authorized/consultas";
         }
         return "redirect:/";
     }

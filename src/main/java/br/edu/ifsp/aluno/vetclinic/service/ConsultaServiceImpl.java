@@ -14,6 +14,11 @@ public class ConsultaServiceImpl implements ConsultaService {
     private ConsultaDao consultaDao;
 
     @Override
+    public List<Consulta> encontrarConsultarPorVeterinario(Long id) {
+        return consultaDao.findByVeterinarioId(id);
+    }
+
+    @Override
     public void deletar(String id) {
         consultaDao.deleteById(id);
     }
