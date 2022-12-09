@@ -28,6 +28,7 @@ public class VeterinarioController {
     public String criar(Model model) {
         model.addAttribute("action", "/veterinarios");
         model.addAttribute("method", "post");
+
         return "veterinarios/form";
     }
     
@@ -47,6 +48,8 @@ public class VeterinarioController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public String atualizar(Veterinario veterinario) {
+        
+
         veterinarioService.salvar(veterinario);
         return "redirect:/veterinarios";
     }
