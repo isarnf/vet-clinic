@@ -11,10 +11,6 @@ import lombok.EqualsAndHashCode;
 @Table(name = "clientes")
 @Entity
 public class Cliente extends AbstractEntity<Long>{
-
-    @Column(name="id",nullable = false, unique = true)
-    private Long id;
-
     @Column(nullable = false, unique = true)
     private String cpf;
 
