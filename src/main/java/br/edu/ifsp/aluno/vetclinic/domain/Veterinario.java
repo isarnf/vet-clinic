@@ -11,6 +11,10 @@ import lombok.EqualsAndHashCode;
 @Table(name = "veterinarios")
 @Entity
 public class Veterinario extends AbstractEntity<Long> {
+
+    @Column(name="id",nullable = false, unique = true)
+    private Long id;
+
     @Column(nullable = false)
     private String nome;
 

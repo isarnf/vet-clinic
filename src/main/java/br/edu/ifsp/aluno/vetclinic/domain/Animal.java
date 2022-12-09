@@ -17,6 +17,9 @@ import lombok.EqualsAndHashCode;
 @Table(name = "animais")
 public class Animal extends AbstractEntity<Long>{
 
+    @Column(name="id",nullable = false, unique = true)
+    private Long id;
+
     @Column(name="nome",nullable = false)
     private String nome;
 
