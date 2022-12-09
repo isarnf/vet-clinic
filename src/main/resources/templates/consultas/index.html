@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
+        
     </head>
 
     <body>
-        <table>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <!--<a class="navbar-brand" href="#">Navbar</a>-->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Consultas</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Animais</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Clientes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Veterinários</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        <table class="table">
             <thead>
-                <th>
-                    Nome
-                </th>
-                <th>
-                    Espécie
-                </th>
-                <th>
-                    Data de nascimento
-                </th>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Espécie</th>
+                <th scope="col">Data de nascimento</th>
+              </tr>
             </thead>
             <tbody>
-                <tr th:each="consulta : ${consultas}">
-                </tr>
+              <tr th:each="consulta : ${consultas}">
+              </tr>
             </tbody>
-        </table>
+          </table>
     </body>
 </html>
