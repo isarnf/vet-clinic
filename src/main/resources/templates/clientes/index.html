@@ -1,33 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{layout}">
+<link th:href="@{/css/style1.css}" rel="stylesheet" />
     <head>
     </head>
 
     <body>
-        <table>
-            <thead>
-                <th>
-                    CPF
-                </th>
-                <th>
-                    Nome
-                </th>
-                <th>
-                    Telefone
-                </th>
-                <th>
-                    E-mail
-                </th>
-            </thead>
-            <tbody>
+        <section class="layout-content" layout:fragment="corpo">
+            <div class="container-fluid p-3">
+              <table class="table table-light">
+                <thead>
+                  <tr>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Operação</th>
+                  </tr>
+                </thead>
+                <tbody>
                 <tr th:each="cliente : ${clientes}">
                     <td th:text="${cliente.getCpf()}"></td>
                     <td th:text="${cliente.getNome()}"></td>
                     <td th:text="${cliente.getTelefone()}"></td>
                     <td th:text="${cliente.getEmail()}"></td>
-                    <td><a th:href="@{/clientes/{id}/editar (id = ${cliente.getId()})}">Ver</a></td>
+                    <td><a th:href="@{/authorized/clientes/{id}/editar (id = ${cliente.getId()})}">Ver</a></td>
                 </tr>
             </tbody>
         </table>
+        <a class="btn btn-primary" href="/clientes/criar">Criar</a>
+      </div>
+    </section>
     </body>
 </html>
+
+
+          
+        

@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{layout}">
+<link th:href="@{/css/style1.css}" rel="stylesheet" />
     <head>
     </head>
 
     <body>
-        <table>
-            <thead>
-                <th>
-                    Nome
-                </th>
-                <th>
-                    CPF
-                </th>
-                <th>
-                    CRMV
-                </th>
-                <th>
-                    E-mail
-                </th>
-            </thead>
-            <tbody>
+        <section class="layout-content" layout:fragment="corpo">
+            <div class="container-fluid p-3">
+              <table class="table table-light">
+                <thead>
+                  <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">CRMV</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Operação</th>
+                  </tr>
+                </thead>
+                <tbody>
                 <tr th:each="veterionario : ${veterinarios}">
                     <td th:text="${veterionario.getNome()}"></td>
                     <td th:text="${veterionario.getCpf()}"></td>
@@ -29,5 +30,6 @@
                 </tr>
             </tbody>
         </table>
+        <a class="btn btn-primary" href="/veterinarios/criar">Criar</a>
     </body>
 </html>

@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{layout}">
+<link th:href="@{/css/style1.css}" rel="stylesheet" />
     <head>
     </head>
 
     <body>
-        <form th:action="${action}" th:method="${method}">
-            <label for="cpf">CPF
-                <input th:value="${cliente != null} ? ${cliente.getCpf()} : ''" type="text" name="cpf" id="cpf">
-            </label>
-            <label for="cpf">Nome
-                <input th:value="${cliente != null} ? ${cliente.getNome()} : ''" type="text" name="nome" id="nome">
-            </label>
-            <label for="crmv">Telefone
-                <input th:value="${cliente != null} ? ${cliente.getTelefone()} : ''" type="text" name="telefone" id="telefone">
-            </label>
-            <label for="email">E-mail
-                <input th:value="${cliente != null} ? ${cliente.getEmail()} : ''" type="text" name="email" id="email">
-            </label>
-            <input type="submit" value="Enviar">
-        </form>
-        <form th:if="${cliente != null}" th:action="@{/clientes/{id} (id = ${cliente.getId()})}" th:method="DELETE">
-            <input type="submit" value="Deletar">
-        </form>
+        <section class="layout-content" layout:fragment="corpo">
+        <div class="container-sm p-3">
+
+            <form th:action="${action}" th:method="${method}">
+                <input th:value="${cliente != null ? cliente.getId() : null}" type="hidden" name="id" id="id">
+                <div class="mb-3">
+                    <label class="form-label" for="nome">Cpf</label>
+                    <input th:value="${cliente != null ? cliente.getCpf() : null}" type="text" id = "cpf" name = "cpf " class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="nome">Nome</label>
+                    <input  th:value="${cliente != null ? cliente.getNome() : null}" type="text" id = "nome" name = "nome " class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="telefone">Telefone</label>
+                    <input th:value="${cliente != null ? cliente.getTelefone() : null}" type="text" id = "telefone" name = "telefone" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="email">E-mail</label>
+                    <input th:value="${cliente != null ? cliente.getEmail() : null}" type="email" id = "email" name = "email" class="form-control">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Enviar">
+            </form>
+        </div>
+    </section>
     </body>
 </html>
