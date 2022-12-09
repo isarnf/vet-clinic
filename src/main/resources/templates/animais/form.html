@@ -1,35 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-    </head>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 
-    <body>
-        <form th:action="${action}" th:method="${method}">
-            <label for="nome">Nome
-                <input th:value="${animal != null} ? ${animal.getNome()} : ''" type="text" name="nome" id="nome">
-            </label>
-            <label for="especie">Espécie
-                <input th:value="${animal != null} ? ${animal.getEspecie()} : ''" type="text" name="especie" id="especie">
-            </label>
-            <label for="dataNascimento">Data de nascimento
-                <input th:value="${animal != null} ? ${animal.getDataNascimento()} : ${null}" type="date" name="dataNascimento" id="dataNascimento">
-            </label>
-            <label for="sexo">
-                Sexo
-                <input th:value="${animal != null} ? ${animal.getSexo()} : ''" type="text" name="sexo" id="sexo">
-            </label>
-            <label for="peso">
-                Peso
-                <input th:value="${animal != null} ? ${animal.getPeso()} : 0" type="number" name="peso" id="peso">
-            </label>
-            <label for="raca">
-                Raça
-                <input th:value="${animal != null} ? ${animal.getRaca()} : ''" type="text" name="raca" id="raca">
-            </label>
-            <input type="submit" value="Enviar">
-        </form>
-        <form th:if="${animal != null}" th:action="@{/animais/{id} (id = ${animal.getId()})}" th:method="DELETE">
-            <input type="submit" value="Deletar">
-        </form>
-    </body>
+<head>
+</head>
+
+<body>
+    <section class="layout-content" layout:fragment="corpo">
+        <div class="container-fluid p-3">
+
+            <form th:action="${action}" th:method="${method}">
+                <div class="mb-3">
+                    <label class="form-label" for="nome">
+                        Nome
+                    </label>
+                    <input class="form-control" th:value="${animal != null} ? ${animal.getNome()} : ''" type="text"
+                        name="nome" id="nome">
+                </div>
+                <div class="mb-3">
+                    <label for="especie">
+                        Espécie
+                    </label>
+                    <input th:value="${animal != null} ? ${animal.getEspecie()} : ''" type="text" name="especie"
+                        id="especie">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="dataNascimento">
+                        Data de nascimento
+                    </label>
+                    <input class="form-control" th:value="${animal != null} ? ${animal.getDataNascimento()} : ${null}"
+                        type="date" name="dataNascimento" id="dataNascimento">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="sexo">
+                        Sexo
+                    </label>
+                    <input class="form-control" th:value="${animal != null} ? ${animal.getSexo()} : ''" type="text"
+                        name="sexo" id="sexo">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="peso">
+                        Peso
+                    </label>
+                    <input class="form-control" th:value="${animal != null} ? ${animal.getPeso()} : 0" type="number"
+                        name="peso" id="peso">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="raca">
+                        Raça
+                    </label>
+                    <input class="form-control" th:value="${animal != null} ? ${animal.getRaca()} : ''" type="text"
+                        name="raca" id="raca">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Enviar">
+            </form>
+            <form th:if="${animal != null}" th:action="@{/authorized/{id} (id = ${animal.getId()})}" th:method="DELETE">
+                <input class="btn btn-error" type="submit" value="Deletar">
+            </form>
+        </div>
+    </section>
+</body>
+
 </html>

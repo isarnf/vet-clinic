@@ -1,41 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-    </head>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 
-    <body>
-        <table>
-            <thead>
-                <th>
-                    Nome
-                </th>
-                <th>
-                    Espécie
-                </th>
-                <th>
-                    Data de nascimento
-                </th>
-                <th>
-                    Sexo
-                </th>
-                <th>
-                    Peso
-                </th>
-                <th>
-                    Raça
-                </th>
-            </thead>
-            <tbody>
-                <tr th:each="animal : ${animais}">
-                    <td th:text="${animal.getNome()}"></td>
-                    <td th:text="${animal.getEspecie()}"></td>
-                    <td th:text="${animal.getDataNascimento()}"></td>
-                    <td th:text="${animal.getSexo()}"></td>
-                    <td th:text="${animal.getPeso()}"></td>
-                    <td th:text="${animal.getRaca()}"></td>
-                    <td><a th:href="@{/animais/{id}/editar (id = ${animal.getId()})}">Ver</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </body>
+<head>
+</head>
+
+<body>
+    <section class="layout-content" layout:fragment="corpo">
+        <div class="container-fluid p-3">
+
+            <table class="table table-light">
+                <thead>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Espécie
+                    </th>
+                    <th>
+                        Data de nascimento
+                    </th>
+                    <th>
+                        Sexo
+                    </th>
+                    <th>
+                        Peso
+                    </th>
+                    <th>
+                        Raça
+                    </th>
+                </thead>
+                <tbody>
+                    <tr th:each="animal : ${animais}">
+                        <td th:text="${animal.getNome()}"></td>
+                        <td th:text="${animal.getEspecie()}"></td>
+                        <td th:text="${animal.getDataNascimento()}"></td>
+                        <td th:text="${animal.getSexo()}"></td>
+                        <td th:text="${animal.getPeso()}"></td>
+                        <td th:text="${animal.getRaca()}"></td>
+                        <td><a th:href="@{/animais/{id}/editar (id = ${animal.getId()})}">Ver</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <a class="btn btn-primary" href="/authorized/animais/criar">Criar</a>
+        </div>
+    </section>
+</body>
+
 </html>
