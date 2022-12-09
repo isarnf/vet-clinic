@@ -1,3 +1,0 @@
-2022-12-08 19:30:46 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'6a81ffd2-879b-44f8-b347-4fc680cea36f' (CONSULTAS: ""ID"" BIGINT NOT NULL)"; SQL statement:
-insert into consultas (animal_id, data_horario, form_animal_id, form_veterinario_id, veterinario_id, id) values (?, ?, ?, ?, ?, ?) [22018-214]
