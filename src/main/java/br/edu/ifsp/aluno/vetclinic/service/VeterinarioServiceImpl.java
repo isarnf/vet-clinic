@@ -32,5 +32,10 @@ public class VeterinarioServiceImpl implements VeterinarioService {
     public Veterinario salvar(Veterinario veterinario) {
         return veterinarioDao.save(veterinario);
     }
+
+    @Override
+    public Veterinario findByEmail(String email) {
+        return veterinarioDao.findByEmail(email);
+    }
     
 }
