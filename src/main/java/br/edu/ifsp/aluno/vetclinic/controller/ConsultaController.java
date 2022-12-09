@@ -1,5 +1,8 @@
 package br.edu.ifsp.aluno.vetclinic.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +18,7 @@ import br.edu.ifsp.aluno.vetclinic.domain.Veterinario;
 import br.edu.ifsp.aluno.vetclinic.service.AnimalService;
 import br.edu.ifsp.aluno.vetclinic.service.ConsultaService;
 import br.edu.ifsp.aluno.vetclinic.service.VeterinarioService;
+import jakarta.servlet.http.HttpSession;
 
 @RequestMapping("/consultas")
 @Controller
@@ -27,7 +31,9 @@ public class ConsultaController {
     private VeterinarioService veterinarioService;
 
     @GetMapping
-    public String indice(Model model) {
+    public String indice(Model model, HttpSession session) {
+        session.setAttribute("asd", "walter" + LocalDateTime.now().toString());
+        System.out.println(session.getAttribute("asd"));
         model.addAttribute("consultas", consultaService.listar());
         return "consultas/index";
     }
