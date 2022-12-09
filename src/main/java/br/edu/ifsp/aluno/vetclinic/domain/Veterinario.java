@@ -22,4 +22,7 @@ public class Veterinario extends AbstractEntity<Long> {
 
     @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
+    private String senha;
 }

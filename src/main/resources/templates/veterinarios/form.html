@@ -17,6 +17,9 @@
             <label for="email">E-mail
                 <input th:value="${veterinario != null} ? ${veterinario.getEmail()} : ''" type="text" name="email" id="email">
             </label>
+            <label for="senha">Senha
+                <input type="password" name="senha" id="senha">
+            </label>
             <input type="submit" value="Enviar">
         </form>
         <form th:if="${veterinario != null}" th:action="@{/veterinarios/{id} (id = ${veterinario.getId()})}" th:method="DELETE">

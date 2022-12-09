@@ -21,14 +21,14 @@
         <div class="container">
             <div class="screen">
                 <div class="screen__content">
-                    <form class="login" th:action="@{/consultas/index}" method="POST">
+                    <form class="login" th:action="@{/sessions}" method="POST">
                         <div class="login__field">
                             <i class="login__icon fas fa-user"></i>
-                            <input type="text" class="login__input" placeholder="CPF">
+                            <input name="email" type="text" class="login__input" placeholder="E-mail">
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
-                            <input type="password" class="login__input" placeholder="senha">
+                            <input name="senha" type="password" class="login__input" placeholder="senha">
                         </div>
                         <button class="button login__submit" >
                             <span class="button__text">Log In</span>
