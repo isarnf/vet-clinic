@@ -7,17 +7,25 @@
         <table>
             <thead>
                 <th>
-                    Nome
+                    Veterinário
                 </th>
                 <th>
-                    Espécie
+                    Animal
                 </th>
                 <th>
-                    Data de nascimento
+                    Horário
+                </th>
+                <th>
+                    Status
                 </th>
             </thead>
             <tbody>
                 <tr th:each="consulta : ${consultas}">
+                    <td th:text="${consulta.getAnimal().getNome()}"></td>
+                    <td th:text="${consulta.getVeterinario().getNome()}"></td>
+                    <td th:text="${consulta.getDataHorario()}"></td>
+                    <td th:text="${consulta.getStatus()}"></td>
+                    <td><a th:href="@{/consultas/{id}/ver (id = ${consulta.getId()})}">Ver</a></td>
                 </tr>
             </tbody>
         </table>

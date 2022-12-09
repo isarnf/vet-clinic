@@ -5,18 +5,29 @@
 
     <body>
         <form th:action="${action}" th:method="${method}">
-            <label for="dataNascimento">Animal
-                <select name="animalId" id="animalId">
+            <input th:value="${consulta != null ? consulta.getId() : null}" type="hidden" name="id" id="id">
+            <label for="formAnimalId">Animal
+                <select th:attr="disabled=${mainDisabled}" name="formAnimalId" id="formAnimalId">
                     <option th:each="animal : ${animais}" th:value="${animal.getId()}" th:text="${animal.getNome()}"></option>
                 </select>
             </label>
-            <label for="dataNascimento">Horário
-                <input type="datetime" name="dataNascimento" id="dataNascimento">
+            <label for="formVeterinarioId">Veterinário
+                <select th:attr="disabled=${mainDisabled}" name="formVeterinarioId" id="formVeterinarioId">
+                    <option th:each="veterinario : ${veterinarios}" th:value="${veterinario.getId()}" th:text="${veterinario.getNome()}"></option>
+                </select>
+            </label>
+            <label for="dataHorario">Horário
+                <input th:attr="disabled=${mainDisabled}"th:value="${consulta != null ? consulta.dataHorario : null}" type="datetime-local" name="dataHorario" id="dataHorario">
+            </label>
+            <label th:attr="hidden=${statusHidden}" for="status">Status
+                <select th:attr="hidden=${statusHidden}" name="status" id="status">
+                    <option th:each="statusItem : ${status}" th:value="${statusItem.toString()}" th:text="${statusItem.toString()}"></option>
+                </select>
             </label>
             <input type="submit" value="Enviar">
         </form>
-        <form th:if="${animal != null}" th:action="@{/animais/{id} (id = ${animal.getId()})}" th:method="DELETE">
+        <!-- <form th:if="${consulta != null}" th:action="@{/consultas/{id} (id = ${consultas.getId()})}" th:method="DELETE">
             <input type="submit" value="Deletar">
-        </form>
+        </form> -->
     </body>
 </html>
