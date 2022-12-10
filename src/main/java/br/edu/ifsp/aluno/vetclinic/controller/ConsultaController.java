@@ -41,7 +41,7 @@ public class ConsultaController {
     
     @GetMapping("/criar")
     public String criar(Model model) {
-        model.addAttribute("action", "/consultas");
+        model.addAttribute("action", "/authorized/consultas");
         model.addAttribute("method", "post");
         model.addAttribute("animais", animalService.listar());
         model.addAttribute("status", Consulta.ConsultaStatus.values());
@@ -61,13 +61,13 @@ public class ConsultaController {
         consulta.setVeterinario(veterinario);
 
         consultaService.salvar(consulta);
-        return "redirect:/consultas";
+        return "redirect:/authorized/consultas";
     }
     
     @GetMapping("/{id}/ver")
     public String editar(@PathVariable(value = "id") String id, HttpSession httpSession, Model model) {
         model.addAttribute("consulta", consultaService.encontrarPorId(id));
-        model.addAttribute("action", "/consultas/" + id);
+        model.addAttribute("action", "/authorized/consultas/" + id);
         model.addAttribute("method", "PUT");
         model.addAttribute("status", Consulta.ConsultaStatus.values());
         model.addAttribute("statusHidden", null);
@@ -88,6 +88,6 @@ public class ConsultaController {
         foundConsulta.setStatus(consulta.getStatus());
 
         consultaService.salvar(foundConsulta);
-        return "redirect:/consultas";
+        return "redirect:/authorized/consultas";
     }
 }
