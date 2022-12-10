@@ -11,25 +11,30 @@
 
             <table class="table table-light">
                 <thead>
-                    <th>
+                    <th scope="col">
                         Nome
                     </th>
-                    <th>
+                    <th scope="col">
                         Espécie
                     </th>
-                    <th>
+                    <th scope="col">
                         Data de nascimento
                     </th>
-                    <th>
+                    <th scope="col">
                         Sexo
                     </th>
-                    <th>
+                    <th scope="col">
                         Peso
                     </th>
-                    <th>
+                    <th scope="col">
                         Raça
                     </th>
-                    <th scope="col">Operação</th>
+                    <th scope="col">
+                        Cliente
+                    </th>
+                    <th scope="col">
+                        Operação
+                    </th>
                 </thead>
                 <tbody>
                     <tr th:each="animal : ${animais}">
@@ -39,6 +44,7 @@
                         <td th:text="${animal.getSexo()}"></td>
                         <td th:text="${animal.getPeso()}"></td>
                         <td th:text="${animal.getRaca()}"></td>
+                        <td th:text="${animal.getCliente() != null ? animal.getCliente().getNome() : null}"></td>
                         <td><a th:href="@{/authorized/animais/{id}/editar (id = ${animal.getId()})}">Ver</a></td>
                     </tr>
                 </tbody>

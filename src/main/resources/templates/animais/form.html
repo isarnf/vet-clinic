@@ -35,17 +35,26 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="sexo">
+                    <label class="form-label" for="especie">
+                        Espécie
+                    </label>
+                    <input class="form-control" th:value="${animal != null} ? ${animal.getEspecie()} : ''" type="text"
+                        name="especie" id="especie">
+                </div>
+                <div class="mb-3">
+                    <label for="sexo">
                         Sexo
                     </label>
-                    <input class="form-control" th:value="${animal != null} ? ${animal.getSexo()} : ''" type="text"
-                        name="sexo" id="sexo">
+                    <select class="form-control" th:value="${animal != null} ? ${animal.getsexo()}" name="sexo" id="sexo">
+                        <option value="Macho">Macho</option>
+                        <option value="Fêmea">Fêmea</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="peso">
                         Peso(Kg)
                     </label>
-                    <input class="form-control" th:value="${animal != null} ? ${animal.getPeso()} : 0" type="number" step=".01"
+                    <input class="form-control" min="0.01" th:value="${animal != null} ? ${animal.getPeso()} : 0" type="number" step=".01"
                         name="peso" id="peso">
                 </div>
                 <div class="mb-3">
@@ -54,6 +63,14 @@
                     </label>
                     <input class="form-control" th:value="${animal != null} ? ${animal.getRaca()} : ''" type="text"
                         name="raca" id="raca">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="formClienteId">Cliente</label>
+                    <select class="form-control" name="formClienteId"
+                        id="formClienteId">
+                        <option th:each="cliente : ${clientes}" th:value="${cliente.getId()}"
+                            th:text="${cliente.getNome()}"></option>
+                    </select>
                 </div>
                 <input class="btn btn-primary" type="submit" value="Enviar">
             </form>

@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.edu.ifsp.aluno.vetclinic.domain.Animal;
+import br.edu.ifsp.aluno.vetclinic.domain.Cliente;
 import br.edu.ifsp.aluno.vetclinic.service.AnimalService;
+import br.edu.ifsp.aluno.vetclinic.service.ClienteService;
 
 @RequestMapping("/authorized/animais")
 @Controller()
 public class AnimalController {
     @Autowired
     private AnimalService animalService;
+    @Autowired
+    private ClienteService clienteService;
 
     @GetMapping
     public String indice(Model model) {
@@ -26,6 +30,7 @@ public class AnimalController {
     
     @GetMapping("/criar")
     public String criar(Model model) {
+        model.addAttribute("clientes", clienteService.listar());
         model.addAttribute("action", "/authorized/animais");
         model.addAttribute("method", "post");
         return "animais/form";
@@ -33,6 +38,8 @@ public class AnimalController {
     
     @PostMapping()
     public String salvar(Animal animal) {
+        Cliente cliente = clienteService.encontrarPorId(animal.getFormClienteId());
+        animal.setCliente(cliente);
         animalService.salvar(animal);
         return "redirect:/authorized/animais";
     }
@@ -40,6 +47,7 @@ public class AnimalController {
     @GetMapping("/{id}/editar")
     public String editar(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("animal", animalService.encontrarPorId(id));
+        model.addAttribute("clientes", clienteService.listar());
         model.addAttribute("action", "/authorized/animais/" + id);
         model.addAttribute("method", "PUT");
         return "animais/form";
@@ -47,6 +55,8 @@ public class AnimalController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public String atualizar(Animal animal) {
+        Cliente cliente = clienteService.encontrarPorId(animal.getFormClienteId());
+        animal.setCliente(cliente);
         animalService.salvar(animal);
         return "redirect:/authorized/animais";
     }

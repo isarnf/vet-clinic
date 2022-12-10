@@ -1,7 +1,10 @@
 package br.edu.ifsp.aluno.vetclinic.domain;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,6 +26,6 @@ public class Cliente extends AbstractEntity<Long>{
     @Column(name="email",nullable = false)
     private String email;
 
-
-    
+    @OneToMany(mappedBy = "cliente")
+    private List<Animal> animais;
 }
