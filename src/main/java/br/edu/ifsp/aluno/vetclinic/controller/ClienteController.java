@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import br.edu.ifsp.aluno.vetclinic.domain.Cliente;
 import br.edu.ifsp.aluno.vetclinic.service.ClienteService;
 
-@RequestMapping("/clientes")
+@RequestMapping("/authorized/clientes")
 @Controller()
 public class ClienteController {
     @Autowired
@@ -26,7 +26,7 @@ public class ClienteController {
     
     @GetMapping("/criar")
     public String criar(Model model) {
-        model.addAttribute("action", "/clientes");
+        model.addAttribute("action", "/authorized/clientes");
         model.addAttribute("method", "post");
         return "clientes/form";
     }
@@ -34,13 +34,13 @@ public class ClienteController {
     @PostMapping()
     public String salvar(Cliente cliente) {
         clienteService.salvar(cliente);
-        return "redirect:/clientes";
+        return "redirect:/authorized/clientes";
     }
     
     @GetMapping("/{id}/editar")
     public String editar(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("cliente", clienteService.encontrarPorId(id));
-        model.addAttribute("action", "/clientes/" + id);
+        model.addAttribute("action", "/authorized/clientes/" + id);
         model.addAttribute("method", "PUT");
         return "clientes/form";
     }
@@ -48,12 +48,12 @@ public class ClienteController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public String atualizar(Cliente cliente) {
         clienteService.salvar(cliente);
-        return "redirect:/clientes";
+        return "redirect:/authorized/clientes";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String deletar(@PathVariable(value = "id") Long id) {
         clienteService.deletar(id);
-        return "redirect:/clientes";
+        return "redirect:/authorized/clientes";
     }
 }
