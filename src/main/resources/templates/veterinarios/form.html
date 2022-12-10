@@ -13,23 +13,23 @@ layout:decorate="~{layout}">
                 <input th:value="${veterinario != null ? veterinario.getId() : null}" type="hidden" name="id" id="id">
                 <div class="mb-3">
                     <label class="form-label" for="nome">Nome</label>
-                    <input th:value="${veterinario != null ? veterinario.getNome() : null}" type="text" id = "cpf" name = "cpf " class="form-control">
+                    <input th:value="${veterinario != null ? veterinario.getNome() : null}" type="text" id = "nome" name = "nome" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="nome">CPF</label>
-                    <input  th:value="${veterinario != null ? veterinario.getCpf() : null}" type="text" id = "nome" name = "nome " class="form-control">
+                    <label class="form-label" for="cpf">CPF</label>
+                    <input  th:value="${veterinario != null ? veterinario.getCpf() : null}" type="text" id = "cpf" name = "cpf" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="telefone">CRMV</label>
-                    <input th:value="${veterinario != null ? veterinario.getCrmv() : null}" type="text" id = "telefone" name = "telefone" class="form-control">
+                    <label class="form-label" for="crmv">CRMV</label>
+                    <input th:value="${veterinario != null ? veterinario.getCrmv() : null}" type="text" id = "crmv" name = "crmv" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="email">E-mail</label>
                     <input th:value="${veterinario != null ? veterinario.getEmail() : null}" type="email" id = "email" name = "email" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="email">Senha</label>
-                    <input th:value="${veterinario != null ? veterinario.getSenha() : null}" type="email" id = "email" name = "email" class="form-control">
+                    <label class="form-label" for="senha">Senha</label>
+                    <input type="password" id = "senha" name = "senha" class="form-control">
                 </div>
                 <input class="btn btn-primary" type="submit" value="Enviar">
             </form>
